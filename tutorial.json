@@ -1,0 +1,190 @@
+{
+  "version": "0.1.0",
+  "config": {
+    "testRunner": {
+      "command": "npm run test",
+      "args": {
+        "filter": "--grep",
+        "tap": "--reporter=mocha-tap-reporter"
+      },
+      "directory": "coderoad"
+    },
+    "repo": {
+      "uri": "https://github.com/your-username/mcp-tutorial",
+      "branch": "v0.1.0"
+    },
+    "dependencies": [
+      {
+        "name": "Install Node packages",
+        "command": "npm install"
+      }
+    ],
+    "setup": {
+      "commands": [
+        "npm install"
+      ],
+      "commits": [
+        "6c77f87"
+      ]
+    }
+  },
+  "levels": [
+    {
+      "id": "1",
+      "title": "Wprowadzenie do MCP",
+      "summary": "Poznaj podstawy Model Context Protocol, jego architekturę i rodzaje transportu.",
+      "content": "Model Context Protocol (MCP) to otwartoźródłowy protokół umożliwiający integrację AI z różnymi narzędziami i usługami.\n\n**Główne zalety:**\n- Standaryzowana komunikacja między AI a narzędziami\n- Dostęp do baz danych, API i usług zewnętrznych\n- Możliwość rozszerzania możliwości Claude Code",
+      "steps": [
+        {
+          "id": "1.1",
+          "content": "### Czym jest MCP?\n\nModel Context Protocol (MCP) to otwartoźródłowy protokół umożliwiający integrację AI z różnymi narzędziami i usługami.\n\n**Główne zalety:**\n- Standaryzowana komunikacja między AI a narzędziami\n- Dostęp do baz danych, API i usług zewnętrznych\n- Możliwość rozszerzania możliwości Claude Code\n\n**Przykładowe zastosowania:**\n- Zarządzanie issue trackerami (GitHub, Jira)\n- Analiza danych monitoringowych (Sentry)\n- Dostęp do baz danych\n- Integracja z narzędziami projektowymi (Figma)\n- Automatyzacja komunikacji (Email, Slack)",
+          "setup": {
+            "commands": [
+              "echo \"Witaj w tutorialu MCP!\""
+            ],
+            "commits": [
+              "f2982a7"
+            ]
+          },
+          "hints": [
+            "MCP działa jako most między Claude a zewnętrznymi systemami",
+            "Protokół jest otwartoźródłowy i rozwijany przez Anthropic",
+            "Możesz tworzyć własne serwery MCP"
+          ]
+        },
+        {
+          "id": "1.2",
+          "content": "### Architektura MCP\n\nMCP opiera się na architekturze klient-serwer:\n\n**Komponenty:**\n1. **Klient MCP** - Claude Code\n2. **Serwer MCP** - Aplikacja udostępniająca funkcjonalność\n3. **Transport** - Warstwa komunikacji (HTTP, SSE, Stdio)\n\n**Schemat działania:**\n```\nClaude Code → Transport → Serwer MCP → Usługa zewnętrzna\n              ←         ←              ←\n```",
+          "setup": {
+            "commits": [
+              "2bacf72"
+            ]
+          },
+          "hints": [
+            "Transport określa sposób komunikacji",
+            "Serwery MCP mogą być lokalne lub zdalne",
+            "Jeden serwer może udostępniać wiele funkcji"
+          ]
+        },
+        {
+          "id": "1.3",
+          "content": "### Rodzaje transportu\n\nMCP wspiera trzy metody komunikacji:\n\n**1. HTTP (Zalecane dla usług zdalnych)**\n```bash\nclaude mcp add --transport http <nazwa> <url>\n```\n\n**2. Stdio (Dla procesów lokalnych)**\n```bash\nclaude mcp add --transport stdio <nazwa> -- <komenda>\n```\n\n**3. SSE (Przestarzałe)**\n```bash\nclaude mcp add --transport sse <nazwa> <url>\n```",
+          "setup": {
+            "commits": [
+              "20c1c23"
+            ]
+          },
+          "hints": [
+            "HTTP najlepsze dla API zewnętrznych",
+            "Stdio idealne dla narzędzi lokalnych",
+            "SSE jest wycofywane, unikaj w nowych projektach"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Instalacja i konfiguracja MCP",
+      "summary": "Naucz się dodawać serwery MCP, zarządzać nimi i konfigurować zakresy.",
+      "content": "Aby dodać serwer MCP, użyj komendy `claude mcp add`. MCP oferuje trzy poziomy konfiguracji: Local, Project i User.",
+      "steps": [
+        {
+          "id": "2.1",
+          "content": "### Dodawanie serwera MCP\n\nAby dodać serwer MCP, użyj komendy `claude mcp add`:\n\n**Podstawowa składnia:**\n```bash\nclaude mcp add --transport <typ> <nazwa> <parametry>\n```\n\n**Przykład - GitHub:**\n```bash\nclaude mcp add --transport stdio github -- npx -y @modelcontextprotocol/server-github\n```\n\n**Przykład - Sentry (HTTP):**\n```bash\nclaude mcp add --transport http sentry https://sentry-mcp.example.com\n```",
+          "setup": {
+            "commits": [
+              "ca2db21"
+            ]
+          },
+          "hints": [
+            "Nazwa serwera musi być unikalna",
+            "Możesz dodać wiele serwerów jednocześnie",
+            "Sprawdź dostępne serwery na stronie Anthropic"
+          ]
+        },
+        {
+          "id": "2.2",
+          "content": "### Zakresy konfiguracji\n\nMCP oferuje trzy poziomy konfiguracji:\n\n**1. Local (Lokalny)**\n- Tylko dla aktualnego projektu\n- Nie jest współdzielony z zespołem\n\n**2. Project (Projektowy)**\n- Zapisany w `.mcp.json`\n- Współdzielony przez Git\n- Dostępny dla całego zespołu\n\n**3. User (Użytkownika)**\n- Dostępny we wszystkich projektach\n- Konfiguracja osobista\n- Przechowywana w katalogu domowym\n\n**Wybór zakresu:**\n```bash\nclaude mcp add --scope project --transport stdio github -- npx -y @modelcontextprotocol/server-github\n```",
+          "setup": {
+            "commits": [
+              "7b627e3"
+            ]
+          },
+          "hints": [
+            "Project scope najlepszy dla projektów zespołowych",
+            "User scope dla narzędzi używanych w wielu projektach",
+            "Local scope dla eksperymentów"
+          ]
+        },
+        {
+          "id": "2.3",
+          "content": "### Zarządzanie serwerami MCP\n\n**Lista serwerów:**\n```bash\nclaude mcp list\n```\n\n**Usuwanie serwera:**\n```bash\nclaude mcp remove <nazwa>\n```\n\n**Aktualizacja serwera:**\n```bash\nclaude mcp update <nazwa>\n```\n\n**Testowanie połączenia:**\n```bash\nclaude mcp test <nazwa>\n```",
+          "setup": {
+            "commits": [
+              "b6eddf1"
+            ]
+          },
+          "hints": [
+            "Regularnie aktualizuj serwery MCP",
+            "Usuń niewykorzystywane serwery",
+            "Testuj połączenia po dodaniu nowego serwera"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Popularne integracje MCP",
+      "summary": "Poznaj integracje z GitHub, bazami danych i innymi popularnymi usługami.",
+      "content": "MCP oferuje gotowe integracje z wieloma popularnymi usługami, takimi jak GitHub, bazy danych, Sentry, Figma i wiele innych.",
+      "steps": [
+        {
+          "id": "3.1",
+          "content": "### Integracja z GitHub\n\nGitHub MCP umożliwia zarządzanie repozytoriami bezpośrednio z Claude Code.\n\n**Instalacja:**\n```bash\nclaude mcp add --transport stdio github -- npx -y @modelcontextprotocol/server-github\n```\n\n**Możliwości:**\n- Tworzenie i zarządzanie issue\n- Obsługa Pull Requestów\n- Przeglądanie commitów\n- Zarządzanie projektami\n\n**Przykładowe użycie:**\nPo instalacji możesz prosić Claude:\n- \"Pokaż mi otwarte issue w tym projekcie\"\n- \"Utwórz nowy PR z moich zmian\"\n- \"Sprawdź ostatnie commity\"",
+          "setup": {
+            "commits": [
+              "3865cfb"
+            ]
+          },
+          "hints": [
+            "Wymaga tokenu GitHub (GITHUB_TOKEN)",
+            "Respektuje uprawnienia tokenu",
+            "Działa z GitHub Enterprise"
+          ]
+        },
+        {
+          "id": "3.2",
+          "content": "### Integracja z bazami danych\n\nMCP pozwala na bezpośredni dostęp do baz danych.\n\n**Przykład - PostgreSQL:**\n```bash\nclaude mcp add --transport stdio postgres -- npx -y @modelcontextprotocol/server-postgres postgresql://user:pass@localhost:5432/db\n```\n\n**Przykład - SQLite:**\n```bash\nclaude mcp add --transport stdio sqlite -- npx -y @modelcontextprotocol/server-sqlite /path/to/database.db\n```\n\n**Możliwości:**\n- Wykonywanie zapytań SQL\n- Analiza struktury bazy\n- Eksport danych\n- Migracje schematów",
+          "setup": {
+            "commits": [
+              "b260c38"
+            ]
+          },
+          "hints": [
+            "Zachowaj ostrożność z uprawnieniami zapisu",
+            "Używaj połączeń tylko do odczytu dla bezpieczeństwa",
+            "Testuj zapytania przed wykonaniem"
+          ]
+        },
+        {
+          "id": "3.3",
+          "content": "### Inne popularne integracje\n\n**Sentry (Monitoring)**\n```bash\nclaude mcp add --transport http sentry <sentry-mcp-url>\n```\nMożliwości: Analiza błędów, monitorowanie wydajności\n\n**Figma (Design)**\n```bash\nclaude mcp add --transport http figma <figma-mcp-url>\n```\nMożliwości: Dostęp do projektów, eksport zasobów\n\n**Notion (Dokumentacja)**\n```bash\nclaude mcp add --transport stdio notion -- npx -y @modelcontextprotocol/server-notion\n```\nMożliwości: Zarządzanie stronami, bazy danych\n\n**Stripe (Płatności)**\n```bash\nclaude mcp add --transport stdio stripe -- npx -y @modelcontextprotocol/server-stripe\n```\nMożliwości: Zarządzanie klientami, płatnościami, subskrypcjami",
+          "setup": {
+            "commits": [
+              "f65c937"
+            ]
+          },
+          "hints": [
+            "Każda integracja wymaga własnej konfiguracji",
+            "Sprawdź dokumentację konkretnego serwera MCP",
+            "Niektóre serwery wymagają kluczy API"
+          ]
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "title": "Gratulacje!",
+    "description": "Ukończyłeś tutorial MCP! Teraz wiesz:\n\n- Czym jest Model Context Protocol\n- Jak instalować i konfigurować serwery MCP\n- Jakie są popularne integracje\n- Jak zarządzać serwerami MCP\n\n**Następne kroki:**\n1. Eksperymentuj z różnymi serwerami MCP\n2. Stwórz własny serwer MCP\n3. Zintegruj MCP z Twoim workflow\n\n**Przydatne linki:**\n- [Dokumentacja Claude Code MCP](https://docs.claude.com/en/docs/claude-code/mcp)\n- [Specyfikacja MCP](https://spec.modelcontextprotocol.io/)\n- [Lista dostępnych serwerów](https://github.com/modelcontextprotocol)\n\nPowodzenia w pracy z MCP!"
+  }
+}
