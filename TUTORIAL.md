@@ -8,7 +8,7 @@ MCP to otwarty standard pozwalający Claude Code na integrację z zewnętrznymi 
 
 ## 1. Wprowadzenie do MCP
 
-### 1.1. Czym jest MCP?
+### 1.1
 
 Model Context Protocol (MCP) to otwartoźródłowy protokół umożliwiający integrację AI z różnymi narzędziami i usługami.
 
@@ -30,7 +30,7 @@ Model Context Protocol (MCP) to otwartoźródłowy protokół umożliwiający in
 - Protokół jest otwartoźródłowy i rozwijany przez Anthropic
 - Możesz tworzyć własne serwery MCP
 
-### 1.2. Architektura MCP
+### 1.2
 
 MCP opiera się na architekturze klient-serwer:
 
@@ -51,7 +51,7 @@ Claude Code → Transport → Serwer MCP → Usługa zewnętrzna
 - Serwery MCP mogą być lokalne lub zdalne
 - Jeden serwer może udostępniać wiele funkcji
 
-### 1.3. Rodzaje transportu
+### 1.3
 
 MCP wspiera trzy metody komunikacji:
 
@@ -80,7 +80,7 @@ claude mcp add --transport sse <nazwa> <url>
 
 ## 2. Instalacja i konfiguracja MCP
 
-### 2.1. Dodawanie serwera MCP
+### 2.1
 
 Aby dodać serwer MCP, użyj komendy `claude mcp add`:
 
@@ -105,7 +105,7 @@ claude mcp add --transport http sentry https://sentry-mcp.example.com
 - Możesz dodać wiele serwerów jednocześnie
 - Sprawdź dostępne serwery na stronie Anthropic
 
-### 2.2. Zakresy konfiguracji
+### 2.2
 
 MCP oferuje trzy poziomy konfiguracji:
 
@@ -134,7 +134,7 @@ claude mcp add --scope project --transport stdio github -- npx -y @modelcontextp
 - User scope dla narzędzi używanych w wielu projektach
 - Local scope dla eksperymentów
 
-### 2.3. Zarządzanie serwerami MCP
+### 2.3
 
 **Lista serwerów:**
 ```bash
@@ -166,7 +166,7 @@ claude mcp test <nazwa>
 
 ## 3. Popularne integracje MCP
 
-### 3.1. Integracja z GitHub
+### 3.1
 
 GitHub MCP umożliwia zarządzanie repozytoriami bezpośrednio z Claude Code.
 
@@ -193,7 +193,7 @@ Po instalacji możesz prosić Claude:
 - Respektuje uprawnienia tokenu
 - Działa z GitHub Enterprise
 
-### 3.2. Integracja z bazami danych
+### 3.2
 
 MCP pozwala na bezpośredni dostęp do baz danych.
 
@@ -219,7 +219,7 @@ claude mcp add --transport stdio sqlite -- npx -y @modelcontextprotocol/server-s
 - Używaj połączeń tylko do odczytu dla bezpieczeństwa
 - Testuj zapytania przed wykonaniem
 
-### 3.3. Inne popularne integracje
+### 3.3
 
 **Sentry (Monitoring)**
 ```bash
