@@ -6,6 +6,23 @@
       "transport": "stdio",
       "description": "Prosty przykładowy serwer MCP - pogoda",
       "scope": "local"
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "transport": "stdio",
+      "description": "Integracja z GitHub - zarządzanie repo, issues, PR",
+      "scope": "project",
+      "env": {
+        "GITHUB_TOKEN": "${GITHUB_TOKEN}"
+      }
+    },
+    "sqlite": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sqlite", "./data/example.db"],
+      "transport": "stdio",
+      "description": "Dostęp do lokalnej bazy SQLite",
+      "scope": "project"
     }
   }
 }

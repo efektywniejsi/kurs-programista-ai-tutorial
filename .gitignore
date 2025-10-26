@@ -1,0 +1,22 @@
+# Environment variables (NIGDY nie commituj tokenów!)
+.env
+
+# Node modules
+node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Data files (jeśli zawierają wrażliwe dane)
+data/*.db
