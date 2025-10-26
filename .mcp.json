@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "weather-server": {
+      "command": "node",
+      "args": ["examples/weather-server.js"],
+      "transport": "stdio",
+      "description": "Prosty przykładowy serwer MCP - pogoda",
+      "scope": "local"
+    }
+  }
+}
