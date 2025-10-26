@@ -1,5 +1,10 @@
 version: '0.1.0'
 config:
+  testRunner:
+    command: echo
+    args:
+      filter: ''
+      tap: ''
   repo:
     uri: https://github.com/your-username/mcp-tutorial
     branch: v0.1.0

@@ -6,7 +6,7 @@ MCP to otwarty standard pozwalający Claude Code na integrację z zewnętrznymi 
 
 ---
 
-## 1. Wprowadzenie do MCP
+## 1.
 
 ### 1.1
 
@@ -78,7 +78,7 @@ claude mcp add --transport sse <nazwa> <url>
 
 ---
 
-## 2. Instalacja i konfiguracja MCP
+## 2.
 
 ### 2.1
 
@@ -164,7 +164,7 @@ claude mcp test <nazwa>
 
 ---
 
-## 3. Popularne integracje MCP
+## 3.
 
 ### 3.1
 
@@ -253,7 +253,7 @@ Możliwości: Zarządzanie klientami, płatnościami, subskrypcjami
 
 ---
 
-## Gratulacje!
+#### Gratulacje!
 
 Ukończyłeś tutorial MCP! Teraz wiesz:
 
