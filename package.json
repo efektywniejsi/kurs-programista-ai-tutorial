@@ -1,0 +1,18 @@
+{
+  "name": "mcp-tutorial",
+  "version": "0.1.0",
+  "description": "Interaktywny tutorial o Model Context Protocol dla Claude Code",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"No tests configured for this tutorial\" && exit 0"
+  },
+  "keywords": [
+    "mcp",
+    "claude",
+    "tutorial",
+    "coderoad"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {}
+}
