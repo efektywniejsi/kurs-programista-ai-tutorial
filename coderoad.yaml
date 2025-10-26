@@ -6,7 +6,7 @@ config:
       filter: ''
       tap: ''
   repo:
-    uri: https://github.com/your-username/mcp-tutorial
+    uri: https://github.com/efektywniejsi/kurs-programista-ai-tutorial
     branch: v0.1.0
   setup:
     commits:
